@@ -278,20 +278,24 @@ section {
 /* Project Carousel */
 .project-carousel {
     margin: 2rem 0;
-    padding: 1rem;
+    padding: 1.5rem;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     border: 1px solid rgba(0, 255, 136, 0.2);
     max-width: 100%;
     overflow: hidden;
+    display: inline-block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .carousel-container {
     position: relative;
-    width: 100%;
+    width: fit-content;
     overflow: hidden;
-    margin-bottom: 1rem;
-    min-height: 350px;
+    margin: 0 auto 1rem auto;
+    min-height: 300px;
     display: block;
 }
 
@@ -394,8 +398,8 @@ section {
 
 /* Real image support */
 .carousel-slide img {
-    max-width: 220px;
-    max-height: 400px;
+    max-width: 280px;
+    max-height: 550px;
     width: auto;
     height: auto;
     border-radius: 12px;
