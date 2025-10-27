@@ -290,21 +290,19 @@ section {
     position: relative;
     width: 100%;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 1rem;
+    min-height: 350px;
+    display: block;
 }
 
 .carousel-slide {
-    min-width: 100%;
+    width: 100%;
     display: none;
+    text-align: center;
 }
 
 .carousel-slide.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     animation: slideIn 0.5s ease-in-out;
 }
 
@@ -407,13 +405,6 @@ section {
     margin: 0 auto;
 }
 
-/* Make carousel more compact */
-.carousel-container {
-    max-height: 450px;
-    min-height: 300px;
-    overflow: hidden;
-    position: relative;
-}
 
 /* Achievements Section */
 .achievement-category {
