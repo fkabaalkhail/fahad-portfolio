@@ -704,6 +704,16 @@ section {
     .social-links {
         grid-template-columns: 1fr;
     }
+    
+    /* Stack split layout on mobile */
+    .project-card-split {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .project-card-split .project-carousel {
+        width: 100%;
+    }
 }
 
 /* Scroll Animation */
