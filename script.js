@@ -171,7 +171,12 @@ console.log('%cBuilt with ❤️ by Fahad Aba-Alkhail', 'color: #00ff88; font-si
 // Certificates dropdown toggle
 function toggleCertificates() {
     const dropdown = document.getElementById('certificatesDropdown');
-    if (dropdown.style.display === 'none') {
+    if (!dropdown) return;
+    
+    const isVisible = dropdown.style.display !== 'none' && 
+                     window.getComputedStyle(dropdown).display !== 'none';
+    
+    if (!isVisible) {
         dropdown.style.display = 'block';
     } else {
         dropdown.style.display = 'none';
