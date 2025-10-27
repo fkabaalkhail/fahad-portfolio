@@ -24,6 +24,9 @@ document.getElementById('contactForm').addEventListener('submit', async function
     
     try {
         // Submit to Formspree
+        console.log('Submitting form to:', form.action);
+        console.log('Form data:', { name, email, message });
+        
         const response = await fetch(form.action, {
             method: 'POST',
             body: formData,
@@ -32,11 +35,16 @@ document.getElementById('contactForm').addEventListener('submit', async function
             }
         });
         
+        console.log('Response status:', response.status);
+        const data = await response.json();
+        console.log('Response data:', data);
+        
         if (response.ok) {
             alert('✅ Message sent successfully! I\'ll get back to you soon.');
             form.reset();
         } else {
-            alert('❌ Something went wrong. Please try again or contact me directly at fkabaalkhail@gmail.com');
+            console.error('Form submission failed:', data);
+            alert('❌ Something went wrong: ' + (data.error || 'Unknown error'));
         }
     } catch (error) {
         console.error('Form submission error:', error);
