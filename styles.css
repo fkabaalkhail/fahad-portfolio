@@ -5,6 +5,7 @@
 }
 
 :root {
+    /* Dark mode (default) */
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
     --bg-tertiary: #1f253d;
@@ -14,6 +15,21 @@
     --text-green: #00ff88;
     --purple: #00ff88;
     --green: #00ff88;
+    --navbar-bg: rgba(26, 26, 26, 0.95);
+}
+
+[data-theme="light"] {
+    /* Light mode */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #e8e8e8;
+    --terminal-bg: #ffffff;
+    --text-primary: #2d2d2d;
+    --text-secondary: #666666;
+    --text-green: #00cc6f;
+    --purple: #00cc6f;
+    --green: #00cc6f;
+    --navbar-bg: rgba(245, 245, 245, 0.95);
 }
 
 body {
@@ -26,6 +42,13 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] body {
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
 }
 
 /* Navigation */
@@ -34,12 +57,56 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
-    background: rgba(26, 26, 26, 0.95);
+    background: var(--navbar-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 255, 136, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: rgba(0, 255, 136, 0.15);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+    background: rgba(0, 255, 136, 0.25);
+    transform: rotate(15deg);
+}
+
+.theme-icon {
+    position: absolute;
+    transition: all 0.3s;
+}
+
+.theme-icon.sun {
+    opacity: 0;
+    transform: rotate(0deg);
+}
+
+.theme-icon.moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+[data-theme="light"] .theme-icon.sun {
+    opacity: 1;
+    color: #ffa500;
+}
+
+[data-theme="light"] .theme-icon.moon {
+    opacity: 0;
 }
 
 .nav-left {
@@ -79,6 +146,12 @@ body {
     max-width: 900px;
     margin: 4rem auto;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .terminal-window {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 204, 111, 0.3);
 }
 
 .terminal-header {
@@ -87,6 +160,12 @@ body {
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .terminal-header {
+    background: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 204, 111, 0.2);
 }
 
 .terminal-dots {

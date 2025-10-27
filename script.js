@@ -168,6 +168,22 @@ window.addEventListener('scroll', () => {
 console.log('%c👋 Hello! Interested in the code? Check out https://github.com/fkabaalkhail', 'color: #00ff88; font-size: 14px; font-family: monospace;');
 console.log('%cBuilt with ❤️ by Fahad Aba-Alkhail', 'color: #00ff88; font-size: 12px; font-family: monospace;');
 
+// Theme switching functionality
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+// Load saved theme preference
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+});
+
 // Carousel functionality
 let slideIndex = {};
 
