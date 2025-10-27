@@ -227,16 +227,18 @@ section {
     display: flex;
     gap: 3rem;
     align-items: flex-start;
+    flex-wrap: nowrap;
 }
 
 .project-content {
-    flex: 1;
+    flex: 1 1 50%;
     min-width: 0;
 }
 
 .project-card-split .project-carousel {
-    flex: 0 0 auto;
+    flex: 0 0 350px;
     margin: 0;
+    width: 350px;
 }
 
 .project-title {
