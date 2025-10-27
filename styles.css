@@ -307,12 +307,28 @@ section {
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(30px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
     }
+}
+
+/* Smooth image transitions */
+.carousel-slide img {
+    transition: all 0.3s ease;
+}
+
+.carousel-slide.active img {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Ensure images are centered */
+.carousel-slide.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-image-placeholder {
@@ -386,12 +402,36 @@ section {
 }
 
 /* Real image support */
+.carousel-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .carousel-slide img {
-    width: 100%;
-    max-width: 300px;
+    max-width: 250px;
+    max-height: 500px;
+    width: auto;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+}
+
+/* Make carousel more compact */
+.project-carousel {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    max-height: 450px;
+    overflow: hidden;
 }
 
 /* Achievements Section */
