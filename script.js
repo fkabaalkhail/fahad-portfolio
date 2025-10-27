@@ -1,13 +1,15 @@
-// Contact form handling
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+// Contact form handling with Formspree
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const form = e.target;
-    const name = form.querySelector('input[type="text"]').value;
-    const email = form.querySelector('input[type="email"]').value;
-    const message = form.querySelector('textarea').value;
+    const formData = new FormData(form);
     
     // Simple validation
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
     if (!name || !email || !message) {
         alert('Please fill in all fields');
         return;
@@ -20,12 +22,26 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Here you would typically send the data to a backend
-    // For now, we'll show a success message
-    alert(`Message sent successfully! I'll get back to you soon.\n\nSender: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    
-    // Clear the form
-    form.reset();
+    try {
+        // Submit to Formspree
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            alert('✅ Message sent successfully! I\'ll get back to you soon.');
+            form.reset();
+        } else {
+            alert('❌ Something went wrong. Please try again or contact me directly at fkabaalkhail@gmail.com');
+        }
+    } catch (error) {
+        console.error('Form submission error:', error);
+        alert('❌ Failed to send message. Please contact me directly at fkabaalkhail@gmail.com');
+    }
 });
 
 // Smooth scroll for anchor links
