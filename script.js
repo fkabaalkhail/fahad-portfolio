@@ -166,5 +166,66 @@ window.addEventListener('scroll', () => {
 });
 
 console.log('%c👋 Hello! Interested in the code? Check out https://github.com/fkabaalkhail', 'color: #00ff88; font-size: 14px; font-family: monospace;');
-console.log('%cBuilt with ❤️ by Fahad Aba-Alkhail', 'color: #8b5cf6; font-size: 12px; font-family: monospace;');
+console.log('%cBuilt with ❤️ by Fahad Aba-Alkhail', 'color: #00ff88; font-size: 12px; font-family: monospace;');
+
+// Carousel functionality
+let slideIndex = {};
+
+function showSlide(carouselId, n) {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+    
+    if (!slideIndex[carouselId]) {
+        slideIndex[carouselId] = 0;
+    }
+    
+    const slides = carousel.getElementsByClassName('carousel-slide');
+    const dots = carousel.parentElement.querySelectorAll('.carousel-dots .dot');
+    
+    if (n >= slides.length) { slideIndex[carouselId] = 0; }
+    if (n < 0) { slideIndex[carouselId] = slides.length - 1; }
+    
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+    }
+    
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+    }
+    
+    slides[slideIndex[carouselId]].classList.add('active');
+    if (dots[slideIndex[carouselId]]) {
+        dots[slideIndex[carouselId]].classList.add('active');
+    }
+}
+
+function changeSlide(carouselId, n) {
+    if (!slideIndex[carouselId]) {
+        slideIndex[carouselId] = 0;
+    }
+    slideIndex[carouselId] += n;
+    showSlide(carouselId, slideIndex[carouselId]);
+}
+
+function currentSlide(carouselId, n) {
+    slideIndex[carouselId] = n;
+    showSlide(carouselId, n);
+}
+
+// Initialize first slide on load
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel-container');
+    carousels.forEach((carousel, index) => {
+        const id = carousel.id;
+        if (id) {
+            showSlide(id, 0);
+            
+            // Auto-play carousel (optional)
+            // Uncomment the lines below to enable auto-sliding
+            // setInterval(() => {
+            //     changeSlide(id, 1);
+            // }, 5000);
+        }
+    });
+});
 
