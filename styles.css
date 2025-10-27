@@ -222,6 +222,23 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Split layout for Mawaqeet */
+.project-card-split {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.project-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-card-split .project-carousel {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
 .project-title {
     font-size: 1.8rem;
     margin-bottom: 1rem;
