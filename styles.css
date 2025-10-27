@@ -551,13 +551,47 @@ section {
     cursor: pointer;
 }
 
-.certificates-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.certificates-section {
+    margin-bottom: 1rem;
 }
 
-.certificates-container .resume-button {
+.certificates-dropdown {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.certificate-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 6px;
+    color: var(--text-green);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.certificate-link:hover {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: rgba(0, 255, 136, 0.4);
+    transform: translateX(5px);
+}
+
+.certificate-link:last-child {
+    margin-bottom: 0;
+}
+
+.certificate-link svg {
+    flex-shrink: 0;
+}
+
+.certificates-section .resume-button {
     width: 100%;
     justify-content: center;
 }
